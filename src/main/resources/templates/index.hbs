@@ -1,0 +1,14 @@
+{{#partial "content"}}
+    <div class="col-md-5">
+        <h4 class="text-primary">Add a new superhero</h4>
+        <form action="/heros/new" method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <button type="submit" class="btn btn-warning">Add hero</button>
+        </form>
+    </div>
+{{/partial}}
+
+{{> layout.hbs}}

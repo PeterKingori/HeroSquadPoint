@@ -11,8 +11,16 @@
 <body>
 <div class="container">
     <!--begin main template-->
-    {{#block "content"}}
-    {{/block}}
+    <div class="row mt-2 mb-5">
+        <div class="col-md-12">
+            <h1 class="display-3">Welcome to The Hero Squad Point</h1>
+            <h5 class="text-mute">Create your own team of superheroes</h5>
+        </div>
+    </div>
+    <div class="row my-5">
+            {{#block "content"}}
+            {{/block}}
+    </div>
 </div>
 <!--end main template-->
 {{#block "footer"}}
