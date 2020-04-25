@@ -1,12 +1,27 @@
 {{#partial "content"}}
     <div class="col-md-5">
+        <h1 class="text-danger">Current Heroes</h1>
+        {{#if heroes}}
+        <ol>
+            {{#each heroes}}
+                    <li>
+                        <p>Name: {{name}}</p>
+                    </li>
+            {{/each}}
+        </ol>
+        {{else}}
+            <p>No heroes added yet</p>
+        {{/if}}
+    </div>
+
+    <div class="col-md-5">
         <h4 class="text-primary">Add a new superhero</h4>
         <form action="/heros/new" method="post">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" id="name" name="name">
             </div>
-            <button type="submit" class="btn btn-warning">Add hero</button>
+            <button type="submit" class="btn btn-primary">Add hero</button>
         </form>
     </div>
 {{/partial}}
