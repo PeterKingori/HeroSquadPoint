@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'com.kingori.projects'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    implementation "com.sparkjava:spark-core:2.6.0"
+    implementation "com.sparkjava:spark-template-handlebars:2.5.5"
+    implementation 'org.slf4j:slf4j-simple:1.7.21'
+}
