@@ -37,10 +37,17 @@ public class App {
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
+        //get: delete all heroes
+        get("/heroes/delete", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            Hero.clearAllHeroes();
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
         //get: show an individual hero and the details
         get("/heroes/:id", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
-            int idOfHeroToFind = Integer.parseInt(request.params(":id"));
+            int idOfHeroToFind = Integer.parseInt(request.params("id"));
             Hero foundHero = Hero.findById(idOfHeroToFind);
             model.put("hero", foundHero);
             return new ModelAndView(model, "hero-details.hbs");
@@ -69,7 +76,13 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //get: delete an individual hero
+        get("/heroes/:id/delete", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            int idOfHeroToDelete = Integer.parseInt(request.params("id"));
+            Hero deleteHero = Hero.findById(idOfHeroToDelete);
+            deleteHero.deleteHero();
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
 
-        //get: delete all heroes
     }
 }

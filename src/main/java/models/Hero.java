@@ -39,7 +39,7 @@ public class Hero {
         return instances;
     }
 
-    public static void clearAllHeros() {
+    public static void clearAllHeroes() {
         instances.clear();
     }
 
@@ -56,5 +56,9 @@ public class Hero {
         this.age = age;
         this.superpower = superpower;
         this.weakness = weakness;
+    }
+
+    public void deleteHero() {
+        instances.remove(id - 1);
     }
 }

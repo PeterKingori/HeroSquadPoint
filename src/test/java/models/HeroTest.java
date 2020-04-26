@@ -14,7 +14,7 @@ public class HeroTest {
 
     @After
     public void tearDown() throws Exception {
-        Hero.clearAllHeros();
+        Hero.clearAllHeroes();
     }
 
     @Test
@@ -55,7 +55,7 @@ public class HeroTest {
 
     @Test
     public void getId_heroInstantiatedWithAnId_1() throws Exception {
-        Hero.clearAllHeros();
+        Hero.clearAllHeroes();
         Hero hero = setupNewHero();
         assertEquals(1, hero.getId());
     }
@@ -74,7 +74,7 @@ public class HeroTest {
     }
 
     @Test
-    public void updateChangesHeroDetails() {
+    public void updateChangesHeroDetails() throws Exception {
         Hero hero = setupNewHero();
         String formerName = hero.getName();
         int formerAge = hero.getAge();
@@ -84,6 +84,23 @@ public class HeroTest {
         hero.update("Green Lantern", 25, "Memory", "Time");
         assertEquals(formerId, hero.getId());
         assertNotEquals(formerName, hero.getName());
+    }
+
+    @Test
+    public void deleteDeleteASpecificHero() throws Exception {
+        Hero hero = setupNewHero();
+        Hero secondHero = new Hero("Superman", 30, "Strength", "Kryptonite");
+        hero.deleteHero();
+        assertEquals(1, Hero.getAll().size());
+        assertEquals(2, Hero.getAll().get(0).getId());
+    }
+
+    @Test
+    public void deleteAllHeroes() throws Exception {
+        Hero hero = setupNewHero();
+        Hero secondHero = new Hero("Superman", 30, "Strength", "Kryptonite");
+        Hero.clearAllHeroes();
+        assertEquals(0, Hero.getAll().size());
     }
 
     //helper methods
