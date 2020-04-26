@@ -21,9 +21,10 @@ public class App {
         post("/heros/new", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             String name = request.queryParams("name");
-            request.session().attribute("name", name);
-            model.put("name", name);
-            Hero newHero = new Hero(name);
+            int age = Integer.parseInt(request.queryParams("age"));
+            String superpower = request.queryParams("superpower");
+            String weakness = request.queryParams("weakness");
+            Hero newHero = new Hero(name, age, superpower, weakness);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
     }
