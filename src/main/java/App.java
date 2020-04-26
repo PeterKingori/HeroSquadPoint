@@ -25,7 +25,6 @@ public class App {
             String superpower = request.queryParams("superpower");
             String weakness = request.queryParams("weakness");
             Hero newHero = new Hero(name, age, superpower, weakness);
-            model.put("hero", newHero);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
