@@ -21,4 +21,38 @@ public class Sql2oTaskDaoTest {
     public void tearDown() throws Exception {
         conn.close();
     }
+
+    //This will confirm that adding a Hero successfully sets the Hero's Id
+    @Test
+    public void addingHeroSetsId() throws Exception {
+        Hero hero = setupNewHero();
+        int originalHeroId = hero.getId();
+        heroDao.add(hero);
+        assertNotEquals(originalHeroId, hero.getId());
+    }
+
+    @Test
+    public void existingHeroesCanBeFoundById() throws Exception {
+        Hero hero = setupNewHero();
+        heroDao.add(hero);
+        Hero foundHero = heroDao.findById(hero.getId());
+        assertEquals(hero, foundHero);
+    }
+
+    @Test
+    public void allAddedHeroesAreReturned() throws Exception {
+        Hero hero = setupNewHero();
+        Hero secondHero = new Hero("Superman", 20, "Strength", "Kryptonite");
+        heroDao.add(hero);
+        heroDao.add(secondHero);
+        assertEquals(2, heroDao.getAll().size());
+    }
+
+    @Test
+    public void noHeroesReturnsEmptyList() throws Exception {
+        assertEquals(0, heroDao.getAll().size());
+    }
+
+    //helper methods
+    public Hero setupNewHero() {return new Hero("Batman", 35, "Wealth", "Past trauma"); }
 }
