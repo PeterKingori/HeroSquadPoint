@@ -12,9 +12,13 @@ public class App {
         staticFileLocation("/public");
 
         //get: show form to add new hero
+        get("/heroes/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            return new ModelAndView(model, "newhero-form.hbs");
+        }, new HandlebarsTemplateEngine());
 
         //post: process form to add new hero
-        post("/heros/new", (request, response) -> {
+        post("/heroes/new", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             String name = request.queryParams("name");
             int age = Integer.parseInt(request.queryParams("age"));
