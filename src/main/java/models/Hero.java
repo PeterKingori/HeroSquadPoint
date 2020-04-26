@@ -96,6 +96,6 @@ public class Hero {
 //        this.weakness = weakness;
 //    }
 
-    //public void deleteHeroById(int id) { instances.remove(id - 1); }
+    //public void deleteById(int id) { instances.remove(id - 1); }
 
 }

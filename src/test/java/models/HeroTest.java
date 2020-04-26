@@ -87,7 +87,7 @@ public class HeroTest {
 //    public void deleteDeleteASpecificHero() throws Exception {
 //        Hero hero = setupNewHero();
 //        Hero secondHero = new Hero("Superman", 30, "Strength", "Kryptonite");
-//        hero.deleteHeroById(1);
+//        hero.deleteById(1);
 //        assertEquals(1, Hero.getAll().size());
 //        assertEquals(2, Hero.getAll().get(0).getId());
 //    }
