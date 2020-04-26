@@ -11,13 +11,9 @@ public class App {
     public static void main(String[] args){
         staticFileLocation("/public");
 
-        get("/", (request, response) -> {
-            Map<String, Object> model = new HashMap<String, Object>();
-            ArrayList<Hero> heroes = Hero.getAll();
-            model.put("heroes", heroes);
-            return new ModelAndView(model, "index.hbs");
-        }, new HandlebarsTemplateEngine());
+        //get: show form to add new hero
 
+        //post: process form to add new hero
         post("/heros/new", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             String name = request.queryParams("name");
@@ -27,5 +23,23 @@ public class App {
             Hero newHero = new Hero(name, age, superpower, weakness);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
+
+        //get: show all heroes
+        get("/", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            ArrayList<Hero> heroes = Hero.getAll();
+            model.put("heroes", heroes);
+            return new ModelAndView(model, "index.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //get: show an individual hero
+
+        //get: show a form to update a hero
+
+        //post: process a form to update a hero
+
+        //get: delete an individual hero
+
+        //get: delete all heroes
     }
 }
