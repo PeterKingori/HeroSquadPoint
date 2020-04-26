@@ -5,11 +5,11 @@ import org.sql2o.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 
-public class Sql2oTaskDaoTest {
+public class Sql2oHeroDaoTest {
     private Sql2oHeroDao heroDao;
     private Connection conn;
 
-    @BeforeClass
+    @Before
     public void setUp() throws Exception {
         String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
