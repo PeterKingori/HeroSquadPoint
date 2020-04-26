@@ -14,7 +14,7 @@ public class App {
         //get: show form to add new hero
         get("/heroes/new", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
-            return new ModelAndView(model, "newhero-form.hbs");
+            return new ModelAndView(model, "hero-form.hbs");
         }, new HandlebarsTemplateEngine());
 
         //post: process form to add new hero
@@ -47,8 +47,26 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //get: show a form to update a hero
+        get("/heroes/:id/update", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            int idOfHeroToEdit = Integer.parseInt(request.params("id"));
+            Hero editHero = Hero.findById(idOfHeroToEdit);
+            model.put("editHero", editHero);
+            return new ModelAndView(model, "hero-form.hbs");
+        }, new HandlebarsTemplateEngine());
 
         //post: process a form to update a hero
+        post("/heroes/:id/update", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            String newName = request.queryParams("name");
+            int newAge = Integer.parseInt(request.queryParams("age"));
+            String newSuperpower = request.queryParams("superpower");
+            String newWeakness = request.queryParams("weakness");
+            int idOfHeroToEdit = Integer.parseInt(request.params("id"));
+            Hero editHero = Hero.findById(idOfHeroToEdit);
+            editHero.update(newName, newAge, newSuperpower, newWeakness);
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
 
         //get: delete an individual hero
 

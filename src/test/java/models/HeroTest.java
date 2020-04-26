@@ -73,6 +73,19 @@ public class HeroTest {
         assertEquals(2, Hero.findById(secondHero.getId()).getId());
     }
 
+    @Test
+    public void updateChangesHeroDetails() {
+        Hero hero = setupNewHero();
+        String formerName = hero.getName();
+        int formerAge = hero.getAge();
+        String formerSuperpower = hero.getSuperpower();
+        String formerWeakness = hero.getWeakness();
+        int formerId = hero.getId();
+        hero.update("Green Lantern", 25, "Memory", "Time");
+        assertEquals(formerId, hero.getId());
+        assertNotEquals(formerName, hero.getName());
+    }
+
     //helper methods
     public Hero setupNewHero() { return new Hero("Batman", 20, "Wealth", "Trauma"); }
 }

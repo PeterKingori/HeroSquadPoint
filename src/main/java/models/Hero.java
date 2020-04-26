@@ -50,4 +50,11 @@ public class Hero {
     public static Hero findById(int id) {
         return instances.get(id - 1);
     }
+
+    public void update(String name, int age, String superpower, String weakness) {
+        this.name = name;
+        this.age = age;
+        this.superpower = superpower;
+        this.weakness = weakness;
+    }
 }

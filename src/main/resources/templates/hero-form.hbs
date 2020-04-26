@@ -1,0 +1,55 @@
+{{#partial "content"}}
+    {{#if editHero}}
+        <div class="col-md-5">
+            <h3>Edit the details of this superhero</h3>
+            <form action="/heroes/{{editHero.id}}/update" method="post">
+                <div class="form-group">
+                    <label for="name">Change the name</label>
+                    <input id="name" name="name" type="text" class="form-control"
+                           value="{{editHero.name}}">
+                </div>
+                <div class="form-group">
+                    <label for="age">Change the age</label>
+                    <input id="age" name="age" type="text" class="form-control" value="{{editHero.age}}">
+                </div>
+                <div class="form-group">
+                    <label for="superpower">Change the superpower</label>
+                    <input id="superpower" name="superpower" type="text" class="form-control"
+                           value="{{editHero.superpower}}">
+                </div>
+                <div class="form-group">
+                    <label for="weakness">Change the weakness</label>
+                    <input id="weakness" name="weakness" type="text" class="form-control"
+                           value="{{editHero.weakness}}">
+                </div>
+                <button type="submit" class="btn btn-primary">Go</button>
+            </form>
+        </div>
+
+    {{else}}
+        <div class="col-md-5">
+            <h4 class="text-primary">Add a new superhero</h4>
+            <form action="/heroes/new" method="post">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="text" class="form-control" id="age" name="age">
+                </div>
+                <div class="form-group">
+                    <label for="superpower">Superpower</label>
+                    <input type="text" class="form-control" id="superpower" name="superpower">
+                </div>
+                <div class="form-group">
+                    <label for="weakness">Weakness</label>
+                    <input type="text" class="form-control" id="weakness" name="weakness">
+                </div>
+                <button type="submit" class="btn btn-primary">Add hero</button>
+            </form>
+        </div>
+    {{/if}}
+{{/partial}}
+
+{{> layout.hbs}}
