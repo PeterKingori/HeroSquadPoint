@@ -8,6 +8,7 @@ public class Hero {
     private int age;
     private String superpower;
     private String weakness;
+    private int id;
 
     public Hero(String name, int age, String superpower, String weakness) {
         this.name = name;
@@ -15,6 +16,7 @@ public class Hero {
         this.superpower = superpower;
         this.weakness = weakness;
         instances.add(this);
+        this.id = instances.size();
     }
 
     public String getName() {
@@ -39,5 +41,13 @@ public class Hero {
 
     public static void clearAllHeros() {
         instances.clear();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public static Hero findById(int id) {
+        return instances.get(id - 1);
     }
 }

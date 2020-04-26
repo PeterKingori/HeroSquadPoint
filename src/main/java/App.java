@@ -25,6 +25,7 @@ public class App {
             String superpower = request.queryParams("superpower");
             String weakness = request.queryParams("weakness");
             Hero newHero = new Hero(name, age, superpower, weakness);
+            model.put("hero", newHero);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -36,7 +37,14 @@ public class App {
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
-        //get: show an individual hero
+        //get: show an individual hero and the details
+        get("/heroes/:id", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            int idOfHeroToFind = Integer.parseInt(request.params(":id"));
+            Hero foundHero = Hero.findById(idOfHeroToFind);
+            model.put("hero", foundHero);
+            return new ModelAndView(model, "hero-details.hbs");
+        }, new HandlebarsTemplateEngine());
 
         //get: show a form to update a hero
 
