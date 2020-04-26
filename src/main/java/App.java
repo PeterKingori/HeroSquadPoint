@@ -79,7 +79,7 @@ public class App {
             Map<String, Object> model = new HashMap<String, Object>();
             int idOfHeroToDelete = Integer.parseInt(request.params("id"));
             Hero deleteHero = Hero.findById(idOfHeroToDelete);
-            deleteHero.deleteHero();
+            deleteHero.deleteHeroById(idOfHeroToDelete);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
