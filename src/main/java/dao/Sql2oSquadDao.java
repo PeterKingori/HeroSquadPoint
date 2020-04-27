@@ -80,5 +80,13 @@ public class Sql2oSquadDao implements SquadDao {
             System.out.println(ex);
         }
     }
+    @Override
+    public List<Hero> getAllHeroesBySquadId(int squadId) {
+        try(Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM heroes WHERE squadId = :squadId")
+                    .addParameter("squadId", squadId)
+                    .executeAndFetch(Hero.class);
+        }
+    }
 
 }

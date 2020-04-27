@@ -2,12 +2,15 @@ package dao;
 
 import models.Hero;
 import models.Squad;
+import org.junit.After;
+import org.junit.Before;
 import org.sql2o.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 
 public class Sql2oSquadDaoTest {
     private Sql2oSquadDao squadDao;
+    private Sql2oHeroDao heroDao;
     private Connection conn;
 
     @Before
@@ -15,6 +18,7 @@ public class Sql2oSquadDaoTest {
         String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
         squadDao = new Sql2oSquadDao(sql2o);
+        heroDao = new Sql2oHeroDao(sql2o);
         conn = sql2o.open(); //keep connection open through entire test so it does not get erased
     }
 
@@ -84,6 +88,22 @@ public class Sql2oSquadDaoTest {
         squadDao.clearAllSquads();
         assertTrue(daoSize > 0 && daoSize > squadDao.getAll().size()); //this is a little
         // overcomplicated, but illustrates well how we might use `assertTrue` in a different way.
+    }
+
+    @Test
+    public void getAllHeroesBySquadReturnsHeroesCorrectly() throws Exception {
+        Squad squad = setupNewSquad();
+        squadDao.add(squad);
+        int squadId = squad.getId();
+        Hero firstHero = new Hero("Thor", 30, "The Hammer", "Anger",squadId);
+        Hero secondHero = new Hero("Antman", 40, "Shrinking", "Size",squadId);
+        Hero thirdHero = new Hero("Iron Man", 45, "Iron Man Suit", "Fear",squadId);
+        heroDao.add(firstHero);
+        heroDao.add(secondHero);
+        assertEquals(2, squadDao.getAllHeroesBySquadId(squadId).size());
+        assertTrue(squadDao.getAllHeroesBySquadId(squadId).contains(firstHero));
+        assertTrue(squadDao.getAllHeroesBySquadId(squadId).contains(secondHero));
+        assertFalse(squadDao.getAllHeroesBySquadId(squadId).contains(thirdHero));
     }
 
     //helper methods
