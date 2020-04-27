@@ -5,8 +5,8 @@
             <p class="card-text">Age: {{hero.age}}</p>
             <p class="card-text">Superpower: {{hero.superpower}}</p>
             <p class="card-text">Weakness: {{hero.weakness}}</p>
-            <a href="/heroes/{{hero.id}}/update" class="card-link">Edit this hero</a>
-            <a href="/heroes/{{hero.id}}/delete" class="card-link btn btn-danger">Delete this
+            <a href="/heroes/{{hero.id}}/edit" class="card-link">Edit this hero</a>
+            <a href="/squads/:squadId/heroes/{{hero.id}}/delete" class="card-link btn btn-danger">Delete this
                 hero</a>
         </div>
     </div>
