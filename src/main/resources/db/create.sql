@@ -5,7 +5,8 @@ CREATE TABLE IF NOT EXISTS heroes (
   name VARCHAR,
   age INT,
   superpower VARCHAR,
-  weakness VARCHAR
+  weakness VARCHAR,
+  squadId INT
 );
 
 CREATE TABLE IF NOT EXISTS squads (

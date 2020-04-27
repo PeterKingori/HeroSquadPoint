@@ -9,12 +9,14 @@ public class Hero {
     private String superpower;
     private String weakness;
     private int id;
+    private int squadId;
 
-    public Hero(String name, int age, String superpower, String weakness) {
+    public Hero(String name, int age, String superpower, String weakness, int squadId) {
         this.name = name;
         this.age = age;
         this.superpower = superpower;
         this.weakness = weakness;
+        this.squadId = squadId;
         //instances.add(this);
         //this.id = instances.size();
     }
@@ -28,6 +30,7 @@ public class Hero {
 
         if (age != hero.age) return false;
         if (id != hero.id) return false;
+        if (squadId != hero.squadId) return false;
         if (!name.equals(hero.name)) return false;
         if (!superpower.equals(hero.superpower)) return false;
         return weakness.equals(hero.weakness);
@@ -40,6 +43,7 @@ public class Hero {
         result = 31 * result + superpower.hashCode();
         result = 31 * result + weakness.hashCode();
         result = 31 * result + id;
+        result = 31 * result + squadId;
         return result;
     }
 
@@ -61,6 +65,14 @@ public class Hero {
 
     public int getId() {
         return id;
+    }
+
+    public int getSquadId() {
+        return squadId;
+    }
+
+    public void setSquadId(int squadId) {
+        this.squadId = squadId;
     }
 
     public void setName(String name) {

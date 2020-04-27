@@ -28,10 +28,11 @@ public class HeroTest {
         assertEquals(20, hero.getAge());
         assertEquals("Wealth", hero.getSuperpower());
         assertEquals("Trauma", hero.getWeakness());
+        assertEquals(1, hero.getSquadId());
     }
 
     //helper methods
-    public Hero setupNewHero() { return new Hero("Batman", 20, "Wealth", "Trauma"); }
+    public Hero setupNewHero() { return new Hero("Batman", 20, "Wealth", "Trauma", 1); }
 
 //    @Test
 //    public void AllHerosAreCorrectlyReturned_true() throws Exception {
