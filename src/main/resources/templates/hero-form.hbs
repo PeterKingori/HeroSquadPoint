@@ -2,7 +2,7 @@
     {{#if editHero}}
         <div class="col-md-5">
             <h3>Edit the details of this superhero</h3>
-            <form action="/heroes/{{editHero.id}}/edit" method="post">
+            <form action="/heroes/{{editHero.id}}" method="post">
                 <div class="form-group">
                     <label for="name">Change the name</label>
                     <input id="name" name="name" type="text" class="form-control"
@@ -25,7 +25,7 @@
                 <div class="form-group">
                     <label for="squad">Change the squad</label>
                     <input id="squad" name="squad" type="text" class="form-control"
-                           value="{{editHero.squad}}">
+                           value="{{editHero.squadId}}">
                 </div>
                 <button type="submit" class="btn btn-primary">Go</button>
             </form>
@@ -34,27 +34,38 @@
     {{else}}
         <div class="col-md-5">
             <h4 class="text-primary">Add a new superhero</h4>
-            <form action="/heroes" method="post">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name">
-                </div>
-                <div class="form-group">
-                    <label for="age">Age</label>
-                    <input type="text" class="form-control" id="age" name="age">
-                </div>
-                <div class="form-group">
-                    <label for="superpower">Superpower</label>
-                    <input type="text" class="form-control" id="superpower" name="superpower">
-                </div>
-                <div class="form-group">
-                    <label for="weakness">Weakness</label>
-                    <input type="text" class="form-control" id="weakness" name="weakness">
-                </div>
-                <div class="form-group">
-                    <label for="squad">Squad to belong to</label>
-                    <input type="text" class="form-control" id="squad" name="squad">
-                </div>
+            <form action="/heroes/new" method="post">
+                {{#if squads}}
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="text" class="form-control" id="age" name="age">
+                    </div>
+                    <div class="form-group">
+                        <label for="superpower">Superpower</label>
+                        <input type="text" class="form-control" id="superpower" name="superpower">
+                    </div>
+                    <div class="form-group">
+                        <label for="weakness">Weakness</label>
+                        <input type="text" class="form-control" id="weakness" name="weakness">
+                    </div>
+                    <div class="form-group">
+                        <label for="squadId">Squad to belong to</label>
+                        <select id="squadId" name="squadId">
+                            {{#each squads}}
+                                <option value="{{id}}">{{name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <p>Don't see the squad you want?<a href="/squads/new">Add a new squad
+                        first.</a></p>
+                {{else}}
+                    <h3>You'll need to add a squad before you add a hero. <a
+                            href="/squads/new">Add one here.</a> </h3>
+                {{/if}}
                 <button type="submit" class="btn btn-primary">Add hero</button>
             </form>
         </div>

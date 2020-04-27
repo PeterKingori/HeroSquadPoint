@@ -2,7 +2,7 @@
     {{#if editSquad}}
         <div class="col-md-5">
             <h1>Edit this Squad</h1>
-            <form action="/squads/{{squad.id}}" method="post">
+            <form action="/squads/{{editSquad.id}}/edit" method="post">
                 <div class="form-group">
                     <label for="name">Edit this squad's name</label>
                     <input id="name" name="name" type="text" value="{{editSquad.name}}">
