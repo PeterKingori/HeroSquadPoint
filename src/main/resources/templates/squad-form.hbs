@@ -5,15 +5,15 @@
             <form action="/squads/{{editSquad.id}}/update" method="post">
                 <div class="form-group">
                     <label for="name">Change this squad's name</label>
-                    <input id="name" name="name" type="text" value="{{editSquad.name}}">
+                    <input class="form-control" id="name" name="name" type="text" value="{{editSquad.name}}">
                 </div>
                 <div class="form-group">
                     <label for="cause">Change this squad's cause</label>
-                    <input id="cause" name="cause" type="text" value="{{editSquad.cause}}">
+                    <input class="form-control" id="cause" name="cause" type="text" value="{{editSquad.cause}}">
                 </div>
                 <div class="form-group">
                     <label for="maxSize">Change this squad's maximum size</label>
-                    <input id="maxSize" name="maxSize" type="number" value="{{editSquad.maxSize}}">
+                    <input class="form-control" id="maxSize" name="maxSize" type="number" value="{{editSquad.maxSize}}">
                 </div>
                 <button type="submit" class="btn btn-primary">Go!</button>
             </form>

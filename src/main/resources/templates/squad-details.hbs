@@ -1,0 +1,18 @@
+{{#partial "content"}}
+    <div class="col-md-8">
+        <h1>{{squad.name}}</h1>
+        <p>Database ID: {{squad.id}}</p>
+        <p>Here are all the heroes listed in this squad:</p>
+        <ol>
+            {{#each heroes}}
+                <li>
+                    <p><a href="/squads/{{squad.id}}/heroes/{{id}}" class="text-white">{{name}}</a></p>
+                </li>
+            {{/each}}
+        </ol>
+        <a href="/squads/{{squad.id}}/edit" class="btn btn-light">Edit this squad</a>
+        <a href="/squads/{{squad.id}}/delete" class="btn btn-danger">DELETE this squad</a>
+    </div>
+{{/partial}}
+
+{{> layout.hbs}}

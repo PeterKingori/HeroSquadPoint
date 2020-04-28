@@ -19,6 +19,28 @@
             <p>No heroes added yet</p>
         {{/if}}
     </div>
+
+    <div class="col-md-5">
+        <h1 class="text-primary">Squads List</h1>
+        {{#if squads}}
+        <ol>
+            {{#each squads}}
+                    <li>
+                        <div class="card border-light text-dark my-3">
+                            <div class="card-body">
+                                <h4 class="card-title">Name: {{name}}</h4>
+                                <p class="card-text">Squad ID: {{id}}</p>
+                                <a href="/squads/{{id}}" class="card-link">See who's in the
+                                    squad</a>
+                            </div>
+                        </div>
+                    </li>
+            {{/each}}
+        </ol>
+        {{else}}
+            <p>No heroes added yet</p>
+        {{/if}}
+    </div>
 {{/partial}}
 
 {{> layout.hbs}}
