@@ -1,24 +1,17 @@
 package models;
 
-import java.util.ArrayList;
-
 public class Hero {
     private String name;
-    //private static ArrayList<Hero> instances = new ArrayList<Hero>();
     private int age;
     private String superpower;
     private String weakness;
     private int id;
-    private int squadId;
 
-    public Hero(String name, int age, String superpower, String weakness, int squadId) {
+    public Hero(String name, int age, String superpower, String weakness) {
         this.name = name;
         this.age = age;
         this.superpower = superpower;
         this.weakness = weakness;
-        this.squadId = squadId;
-        //instances.add(this);
-        //this.id = instances.size();
     }
 
     @Override
@@ -30,7 +23,6 @@ public class Hero {
 
         if (age != hero.age) return false;
         if (id != hero.id) return false;
-        if (squadId != hero.squadId) return false;
         if (!name.equals(hero.name)) return false;
         if (!superpower.equals(hero.superpower)) return false;
         return weakness.equals(hero.weakness);
@@ -43,7 +35,6 @@ public class Hero {
         result = 31 * result + superpower.hashCode();
         result = 31 * result + weakness.hashCode();
         result = 31 * result + id;
-        result = 31 * result + squadId;
         return result;
     }
 
@@ -67,14 +58,6 @@ public class Hero {
         return id;
     }
 
-    public int getSquadId() {
-        return squadId;
-    }
-
-    public void setSquadId(int squadId) {
-        this.squadId = squadId;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -94,20 +77,5 @@ public class Hero {
     public void setId(int id) {
         this.id = id;
     }
-
-    //public static ArrayList<Hero> getAll() { return instances; }
-
-    //public static void clearAllHeroes() { instances.clear(); }
-
-    //public static Hero findById(int id) {return instances.get(id - 1); }
-
-//    public void update(String name, int age, String superpower, String weakness) {
-//        this.name = name;
-//        this.age = age;
-//        this.superpower = superpower;
-//        this.weakness = weakness;
-//    }
-
-    //public void deleteById(int id) { instances.remove(id - 1); }
 
 }

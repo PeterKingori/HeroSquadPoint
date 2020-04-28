@@ -42,7 +42,7 @@ public class Sql2oHeroDaoTest {
     @Test
     public void allAddedHeroesAreReturned() throws Exception {
         Hero hero = setupNewHero();
-        Hero secondHero = new Hero("Superman", 20, "Strength", "Kryptonite", 1);
+        Hero secondHero = new Hero("Superman", 20, "Strength", "Kryptonite");
         heroDao.add(hero);
         heroDao.add(secondHero);
         assertEquals(2, heroDao.getAll().size());
@@ -59,16 +59,14 @@ public class Sql2oHeroDaoTest {
         int initialAge = 35;
         String initialSuperpower = "Wealth";
         String initialWeakness = "Past trauma";
-        int initialSquad = 1;
-        Hero hero = new Hero(initialName, initialAge, initialSuperpower, initialWeakness, 1);
+        Hero hero = new Hero(initialName, initialAge, initialSuperpower, initialWeakness);
         heroDao.add(hero);
-        heroDao.update(hero.getId(),"Green Lantern", 25, "Memory", "Time",2);
+        heroDao.update(hero.getId(),"Green Lantern", 25, "Memory", "Time");
         Hero updatedHero = heroDao.findById(hero.getId());
         assertNotEquals(initialName, updatedHero.getName());
         assertNotEquals(initialAge, updatedHero.getAge());
         assertNotEquals(initialSuperpower, updatedHero.getSuperpower());
         assertNotEquals(initialWeakness, updatedHero.getWeakness());
-        assertNotEquals(initialSquad, updatedHero.getSquadId());
     }
 
     @Test
@@ -82,7 +80,7 @@ public class Sql2oHeroDaoTest {
     @Test
     public void deleteAllHeroes() throws Exception {
         Hero hero = setupNewHero();
-        Hero secondHero = new Hero("Superman", 20, "Strength", "Kryptonite", 1);
+        Hero secondHero = new Hero("Superman", 20, "Strength", "Kryptonite");
         heroDao.add(hero);
         heroDao.add(secondHero);
         int daoSize = heroDao.getAll().size();
@@ -90,14 +88,14 @@ public class Sql2oHeroDaoTest {
         assertTrue(daoSize > 0 && daoSize > heroDao.getAll().size()); //this is a little overcomplicated, but illustrates well how we might use `assertTrue` in a different way.
     }
 
-    @Test
-    public void squadIdIsReturnedCorrectly() throws Exception {
-        Hero hero = setupNewHero();
-        int originalSquadId = hero.getSquadId();
-        heroDao.add(hero);
-        assertEquals(originalSquadId, heroDao.findById(hero.getId()).getSquadId());
-    }
+//    @Test
+//    public void squadIdIsReturnedCorrectly() throws Exception {
+//        Hero hero = setupNewHero();
+//        int originalSquadId = hero.getSquadId();
+//        heroDao.add(hero);
+//        assertEquals(originalSquadId, heroDao.findById(hero.getId()));
+//    }
 
     //helper methods
-    public Hero setupNewHero() {return new Hero("Batman", 35, "Wealth", "Past trauma", 1); }
+    public Hero setupNewHero() {return new Hero("Batman", 35, "Wealth", "Past trauma"); }
 }
