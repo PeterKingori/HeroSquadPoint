@@ -14,4 +14,4 @@ CREATE TABLE squads (
     name VARCHAR,
     cause VARCHAR
 );
-CREATE DATABASE herosquad_test WITH TEMPLATE herosquad;
+<!--CREATE DATABASE herosquad_test WITH TEMPLATE herosquad;-->

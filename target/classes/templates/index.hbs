@@ -1,0 +1,48 @@
+{{#partial "content"}}
+    <div class="col-md-5">
+        <h1 class="text-primary">Heroes List</h1>
+        {{#if heroes}}
+        <ol>
+            {{#each heroes}}
+                    <li>
+                        <div class="card border-light text-dark my-3">
+                            <div class="card-body">
+                                <h4 class="card-title">Name: {{name}}</h4>
+                                <!--<p class="card-text">Age: {{age}}</p>
+                                <p class="card-text">Superpower: {{superpower}}</p>
+                                <p class="card-text">Weakness: {{weakness}}</p>
+                                <p class="card-text">Squad: {{squadId}}</p>-->
+                                <a href="/heroes/{{id}}" class="card-link">See
+                                    more</a>
+                            </div>
+                        </div>
+                    </li>
+            {{/each}}
+        </ol>
+        {{else}}
+            <p>No heroes added yet</p>
+        {{/if}}
+    </div>
+    <div class="col-md-5">
+        <h1 class="text-primary">Squad List</h1>
+        {{#if squads}}
+        <ol>
+            {{#each squads}}
+                    <li>
+                        <div class="card border-light text-dark my-3">
+                            <div class="card-body">
+                                <h4 class="card-title">Name: {{name}}</h4>
+                                <p class="card-text">Cause fighting for: {{cause}}</p>
+                                <a href="/squads/{{id}}" class="card-link">See more</a>
+                            </div>
+                        </div>
+                    </li>
+            {{/each}}
+        </ol>
+        {{else}}
+            <p>No squads added yet</p>
+        {{/if}}
+    </div>
+{{/partial}}
+
+{{> layout.hbs}}

@@ -12,10 +12,21 @@ import spark.template.handlebars.HandlebarsTemplateEngine;
 import static spark.Spark.*;
 
 public class App {
+    static int getHerokuAssignedPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
+    }
     public static void main(String[] args){
+        port(getHerokuAssignedPort());
         staticFileLocation("/public");
-        String connectionString = "jdbc:postgresql://localhost:5432/herosquad";
-        Sql2o sql2o = new Sql2o(connectionString, null, null);
+        //String connectionString = "jdbc:postgresql://localhost:5432/herosquad";
+        //Sql2o sql2o = new Sql2o(connectionString, null, null);
+        String connectionString = "jdbc:postgresql://zeykqwccfpruol" +
+                ":73c4fce1607c43ef106184369d54bbc78f748f90ade0c45051119e3c06d64a2f@ec2-52-6-143-153.compute-1.amazonaws.com:5432/d5bo5nhkso48t8\n";
+        Sql2o sql2o = new Sql2o(connectionString, "zeykqwccfpruol", "73c4fce1607c43ef106184369d54bbc78f748f90ade0c45051119e3c06d64a2f\n");
         Sql2oHeroDao heroDao = new Sql2oHeroDao(sql2o);
         Sql2oSquadDao squadDao = new Sql2oSquadDao(sql2o);
 

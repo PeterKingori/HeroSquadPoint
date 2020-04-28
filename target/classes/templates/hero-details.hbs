@@ -1,0 +1,17 @@
+{{#partial "content"}}
+    <div class="card text-dark my-3">
+        <div class="card-body">
+            <h4 class="card-title">Name: {{hero.name}}</h4>
+            <p class="card-text">Age: {{hero.age}}</p>
+            <p class="card-text">Superpower: {{hero.superpower}}</p>
+            <p class="card-text">Weakness: {{hero.weakness}}</p>
+            <a href="/heroes/{{hero.id}}/edit" class="card-link">Edit this hero</a>
+            <a href="/squads/{{hero.squadId}}/heroes/{{hero.id}}/delete" class="card-link btn
+            btn-danger">Delete
+                this
+                hero</a>
+        </div>
+    </div>
+{{/partial}}
+
+{{> layout.hbs}}

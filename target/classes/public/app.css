@@ -1,0 +1,8 @@
+body {
+    background-image: url(../images/win.jpg);
+    background-position: bottom-right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    color: #F8F8F8;
+}

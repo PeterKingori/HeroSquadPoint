@@ -15,8 +15,11 @@ public class Sql2oSquadDaoTest {
 
     @BeforeClass
     public static void setUp() throws Exception {
-        String connectionString = "jdbc:postgresql://localhost:5432/herosquad_test";
-        Sql2o sql2o = new Sql2o(connectionString, null, null);
+        //String connectionString = "jdbc:postgresql://localhost:5432/herosquad_test";
+        //Sql2o sql2o = new Sql2o(connectionString, null, null);
+        String connectionString = "jdbc:postgresql://zeykqwccfpruol" +
+                ":73c4fce1607c43ef106184369d54bbc78f748f90ade0c45051119e3c06d64a2f@ec2-52-6-143-153.compute-1.amazonaws.com:5432/d5bo5nhkso48t8\n";
+        Sql2o sql2o = new Sql2o(connectionString, "zeykqwccfpruol", "73c4fce1607c43ef106184369d54bbc78f748f90ade0c45051119e3c06d64a2f\n");
         squadDao = new Sql2oSquadDao(sql2o);
         heroDao = new Sql2oHeroDao(sql2o);
         conn = sql2o.open(); //keep connection open through entire test so it does not get erased
