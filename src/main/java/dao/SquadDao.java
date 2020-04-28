@@ -5,5 +5,19 @@ import models.Hero;
 import java.util.List;
 
 public interface SquadDao {
+    //LIST all squads
+    List<Squad> getAll();
 
+    //CREATE
+    void add(Squad squad);
+
+    //READ
+    Squad findById(int id);
+
+    //UPDATE
+    void update(int id, String name, String cause, int maxSize);
+
+    //DELETE
+    void deleteById(int id);
+    void clearAllSquads();
 }

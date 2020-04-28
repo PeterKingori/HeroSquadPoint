@@ -64,7 +64,7 @@ public class Sql2oHeroDao implements HeroDao {
 
     @Override
     public void deleteById(int id) {
-        String sql = "DELETE from heroes WHERE id = :id";
+        String sql = "DELETE FROM heroes WHERE id = :id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)
@@ -76,7 +76,7 @@ public class Sql2oHeroDao implements HeroDao {
 
     @Override
     public void clearAllHeroes() {
-        String sql = "DELETE from heroes";
+        String sql = "DELETE FROM heroes";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .executeUpdate();
