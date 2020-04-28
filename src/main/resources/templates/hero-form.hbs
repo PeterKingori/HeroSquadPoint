@@ -2,7 +2,7 @@
     {{#if editHero}}
         <div class="col-md-5">
             <h3>Edit the details of this superhero</h3>
-            <form action="/heroes/{{editHero.id}}/update" method="post">
+            <form action="/heroes/{{editHero.id}}/edit" method="post">
                 <div class="form-group">
                     <label for="name">Change the name</label>
                     <input id="name" name="name" type="text" class="form-control"
@@ -22,6 +22,11 @@
                     <input id="weakness" name="weakness" type="text" class="form-control"
                            value="{{editHero.weakness}}">
                 </div>
+                <div class="form-group">
+                    <label for="squadId">Change the squad to belong to (put in a number)</label>
+                    <input type="number" class="form-control" id="squadId" name="squadId"
+                           value="{{editHero.squadId}}">
+                </div>
                 <button type="submit" class="btn btn-primary">Go</button>
             </form>
         </div>
@@ -29,7 +34,7 @@
     {{else}}
         <div class="col-md-5">
             <h4 class="text-primary">Add a new superhero</h4>
-            <form action="/heroes/new" method="post">
+            <form action="/heroes" method="post">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" class="form-control" id="name" name="name">
@@ -45,6 +50,11 @@
                 <div class="form-group">
                     <label for="weakness">Weakness</label>
                     <input type="text" class="form-control" id="weakness" name="weakness">
+                </div>
+                <div class="form-group">
+                    <label for="squadId">Squad to belong to (put in a number)</label>
+                    <input type="number" class="form-control" id="squadId" name="squadId"
+                           value="squadId">
                 </div>
                 <button type="submit" class="btn btn-primary">Add hero</button>
             </form>

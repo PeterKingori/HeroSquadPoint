@@ -95,21 +95,21 @@ public class Sql2oSquadDaoTest {
         // overcomplicated, but illustrates well how we might use `assertTrue` in a different way.
     }
 
-//    @Test
-//    public void getAllHeroesBySquadReturnsHeroesCorrectly() throws Exception {
-//        Squad squad = setupNewSquad();
-//        squadDao.add(squad);
-//        int squadId = squad.getId();
-//        Hero firstHero = new Hero("Thor", 30, "The Hammer", "Anger", squadId);
-//        Hero secondHero = new Hero("Antman", 40, "Shrinking", "Size",squadId);
-//        Hero thirdHero = new Hero("Iron Man", 45, "Iron Man Suit", "Fear",squadId);
-//        heroDao.add(firstHero);
-//        heroDao.add(secondHero);
-//        assertEquals(2, squadDao.getAllHeroesBySquadId(squadId).size());
-//        assertTrue(squadDao.getAllHeroesBySquadId(squadId).contains(firstHero));
-//        assertTrue(squadDao.getAllHeroesBySquadId(squadId).contains(secondHero));
-//        assertFalse(squadDao.getAllHeroesBySquadId(squadId).contains(thirdHero));
-//    }
+    @Test
+    public void getAllHeroesBySquadReturnsHeroesCorrectly() throws Exception {
+        Squad squad = setupNewSquad();
+        squadDao.add(squad);
+        int squadId = squad.getId();
+        Hero firstHero = new Hero("Thor", 30, "The Hammer", "Anger", squadId);
+        Hero secondHero = new Hero("Antman", 40, "Shrinking", "Size",squadId);
+        Hero thirdHero = new Hero("Iron Man", 45, "Iron Man Suit", "Fear",squadId);
+        heroDao.add(firstHero);
+        heroDao.add(secondHero);
+        assertEquals(2, squadDao.getAllHeroesBySquadId(squadId).size());
+        assertTrue(squadDao.getAllHeroesBySquadId(squadId).contains(firstHero));
+        assertTrue(squadDao.getAllHeroesBySquadId(squadId).contains(secondHero));
+        assertFalse(squadDao.getAllHeroesBySquadId(squadId).contains(thirdHero));
+    }
 
     //helper methods
     public Squad setupNewSquad() {

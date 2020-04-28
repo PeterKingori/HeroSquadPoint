@@ -60,9 +60,7 @@ public class Hero {
         return id;
     }
 
-    public int getSquadId() {
-        return squadId;
-    }
+    public int getSquadId() { return squadId; }
 
     public void setName(String name) {
         this.name = name;

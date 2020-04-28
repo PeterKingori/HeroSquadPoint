@@ -18,10 +18,23 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link" href="/">See All Heroes</a>
+                <a class="nav-link" href="/squads/new">Create a Squad</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/heroes/new">Add a New Hero</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    See All Squads
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    {{#if squads}}
+                        {{#each squads}}
+                            <li><a href="/squads/{{id}}" class="dropdown-item">{{name}}</a></li>
+                        {{/each}}
+                    {{/if}}
+                </ul>
             </li>
         </ul>
     </div>
@@ -35,8 +48,8 @@
         </div>
     </div>
     <div class="row my-5">
-            {{#block "content"}}
-            {{/block}}
+        {{#block "content"}}
+        {{/block}}
     </div>
 </div>
 <!--end main template-->
@@ -45,6 +58,9 @@
         <div class="row">
             <div class="col-md-4">
                 <a href="/heroes/delete" class="btn btn-danger">DELETE ALL HEROES</a>
+            </div>
+            <div class="col-md-4">
+                <a href="/squads/delete" class="btn btn-danger">DELETE ALL SQUADS</a>
             </div>
         </div>
     </div>
