@@ -6,20 +6,27 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 public class Sql2oHeroDaoTest {
-    private Sql2oHeroDao heroDao;
-    private Connection conn;
+    private static Sql2oHeroDao heroDao;
+    private static Connection conn;
 
-    @Before
-    public void setUp() throws Exception {
-        String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
-        Sql2o sql2o = new Sql2o(connectionString, "", "");
+    @BeforeClass
+    public static void setUp() throws Exception {
+        String connectionString = "jdbc:postgresql://localhost:5432/herosquad_test";
+        Sql2o sql2o = new Sql2o(connectionString, null, null);
         heroDao = new Sql2oHeroDao(sql2o);
         conn = sql2o.open(); //keep connection open through entire test so it does not get erased
     }
 
     @After
     public void tearDown() throws Exception {
-        conn.close();
+        System.out.println("clearing database");
+        heroDao.clearAllHeroes();
+    }
+
+    @AfterClass
+    public static void shutDown() throws Exception {
+        conn.close(); // close connection once after this entire test file is finished
+        System.out.println("connection closed");
     }
 
     //This will confirm that adding a Hero successfully sets the Hero's Id

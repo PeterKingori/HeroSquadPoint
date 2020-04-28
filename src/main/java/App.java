@@ -14,9 +14,8 @@ import static spark.Spark.*;
 public class App {
     public static void main(String[] args){
         staticFileLocation("/public");
-        String connectionString = "jdbc:h2:~/herosquad1.db;INIT=RUNSCRIPT from " +
-                "'classpath:db/create.sql'";
-        Sql2o sql2o = new Sql2o(connectionString, "", "");
+        String connectionString = "jdbc:postgresql://localhost:5432/herosquad";
+        Sql2o sql2o = new Sql2o(connectionString, null, null);
         Sql2oHeroDao heroDao = new Sql2oHeroDao(sql2o);
         Sql2oSquadDao squadDao = new Sql2oSquadDao(sql2o);
 
@@ -67,7 +66,6 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //get: show a specific squad and the heroes it contains
-        // /squads/:id
         get("/squads/:id", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             int idOfSquadToFind = Integer.parseInt(request.params("id"));
@@ -91,7 +89,6 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //post: process a form to update a squad
-        // /squads/:id/update
         post("/squads/:id/update", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
             int idOfSquadToEdit = Integer.parseInt(request.params("id"));
@@ -104,6 +101,12 @@ public class App {
 
         //get: delete a squad and heroes it contains
         // /squads/:id/delete
+        get("/squads/:id/delete", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            int idOfSquadToDelete = Integer.parseInt(request.params("id"));
+            squadDao.deleteById(idOfSquadToDelete);
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
 
         //get: delete an individual hero
         get("/squads/:squadId/heroes/:heroId/delete", (request, response) -> {
